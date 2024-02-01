@@ -1,0 +1,24 @@
+name: Springboot Microservice
+
+defaults:
+  run:
+    shell: bash
+    working-directory: demo
+
+on:
+  push:
+   
+  workflow_dispatch:
+
+jobs:
+  container-demo:
+    runs-on: ubuntu-latest
+    container: 
+      image: eclipse-temurin_17-jdk
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      
+      - name: Check java version
+        run: java --version
