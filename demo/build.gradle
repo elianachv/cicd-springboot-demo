@@ -25,9 +25,9 @@ tasks.named('test') {
 }
 
 task getProjectName() {
-	println rootProject.name
+	return rootProject.name
 }
 
 task getProjectVersion() {
-	println version
+	return version
 }
