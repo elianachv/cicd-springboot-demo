@@ -31,3 +31,7 @@ task getProjectName() {
 task getProjectVersion() {
 	return version
 }
+
+task getJarName() {
+	return version
+}

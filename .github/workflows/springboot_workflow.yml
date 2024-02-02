@@ -38,8 +38,8 @@ jobs:
          java --version
          chmod +x gradlew
          ./gradlew build
-         export APP_NAME=$(./gradlew getProjectName)
-         export APP_VERSION=$(./gradlew getProjectVersion)
+         export APP_NAME=$(./gradlew -q getProjectName)
+         export APP_VERSION=$(./gradlew -q getProjectVersion)
          echo "result=OK" >> $GITHUB_OUTPUT
       
       - name: Archive
