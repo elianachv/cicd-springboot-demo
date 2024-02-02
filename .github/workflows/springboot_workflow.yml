@@ -7,7 +7,6 @@ defaults:
 
 on:
   push:
-   
   workflow_dispatch:
 
 jobs:
@@ -28,7 +27,7 @@ jobs:
     container: 
       image: eclipse-temurin:17-jdk
     outputs:
-      success: ${{ steps.build.output.result }}
+      success: ${{ steps.build.outputs.result }}
         
     steps:
       - name: Checkout
@@ -39,8 +38,15 @@ jobs:
          java --version
          chmod +x gradlew
          ./gradlew build
-          echo "result=OK" >> $GITHUB_OUTPUT
-  
+         export APP_NAME=$(./gradlew getProjectName)
+         export APP_VERSION=$(./gradlew getProjectVersion)
+         echo "result=OK" >> $GITHUB_OUTPUT
+      
+      - name: Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: springboot-jar
+          path: demo/build/libs/$APP_NAME-$APP_VERSION.jar
 
   springboot-container:
     runs-on: ubuntu-latest
@@ -52,4 +58,4 @@ jobs:
       
       - name: Build container
         run: |
-          echo "${{ needs.springboot-build.outputs.success }}"
+          echo "${{ needs.springboot-build.output.success }}"
