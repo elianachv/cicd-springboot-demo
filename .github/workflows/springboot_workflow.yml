@@ -71,6 +71,6 @@ jobs:
       - name: Docker build
         run: |
          docker build -t springboot-demo:latest .
-         docker tag springboot-demo:latest ghcr.io/elianachv/springboot-demo:latest
+         docker tag springboot-demo:latest ghcr.io/elianachv/cicd-springboot-demo/springboot-demo:latest
  
 
