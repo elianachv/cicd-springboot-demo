@@ -58,3 +58,13 @@ jobs:
       - name: Build container
         run: |
           echo "${{ needs.springboot-build.output.success }}"
+      
+      - name: Get Jar
+        uses: actions/download-artifact@v4
+        with:
+          name: springboot-jar
+          path: demo
+      
+      - name: Verify artifact
+        run: ls -lrth
+
