@@ -14,7 +14,7 @@ jobs:
   container-demo:
     runs-on: ubuntu-latest
     container: 
-      image: eclipse-temurin_17-jdk
+      image: eclipse-temurin:17-jdk
     
     steps:
       - name: Checkout
@@ -25,6 +25,8 @@ jobs:
   
   springboot-build:
     runs-on: ubuntu-latest
+    container: 
+      image: eclipse-temurin:17-jdk
     outputs:
       success: ${{ steps.build.outputs.result }}
         
